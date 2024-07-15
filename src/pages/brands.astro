@@ -3,5 +3,19 @@ import Layout from "~/layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
- 
+  <form id="testForm">
+    <input type="text" name="value1" placeholder="hola" />
+    <button type="button" name="value2">value2</button>
+    <button type="submit">Enviar</button>
+  </form>
 </Layout>
+
+<script>
+  const form = document.getElementById("testForm") as HTMLFormElement;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const values = Object.fromEntries(formData.entries());
+    console.log(values);
+  });
+</script>
