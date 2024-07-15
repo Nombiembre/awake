@@ -1,0 +1,51 @@
+---
+import StrategyCard from "~/components/campaigns/StrategyCard.jsx";
+import ButtonPrimary from "~/components/common/ButtonPrimary.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <h2 class="text-2xl font-normal text-zinc-700">
+    1. Select your campaign name
+  </h2>
+  <input type="text" class="mt-6 w-full block text-zinc-700 border rounded-lg border-zinc-300 px-4 py-3 bg-white" placeholder="Campaign name" />
+
+  <h2 class="text-2xl font-normal text-zinc-700 mt-8">
+    2. Select your campaign goal
+  </h2>
+  <div id="campaign-goals-list" class="flex gap-4 mt-6 ">
+    <ButtonPrimary value="ugc">Multi-Channel UGC</ButtonPrimary>
+    <ButtonPrimary value="awareness">Awareness & Reach</ButtonPrimary>
+    <ButtonPrimary value="conversion">Conversion & Sales</ButtonPrimary>
+  </div>
+
+  <h2 class="text-2xl font-normal text-zinc-700 mt-8">
+    3. Select your campaign strategy
+  </h2>
+  <div class="flex gap-4 mt-6">
+    <StrategyCard client:load />
+  </div>
+
+</Layout>
+
+<script>
+  import { campaignStore } from "~/stores/chooseCampaign";
+
+  document.addEventListener("astro:page-load", () => {
+    const btnList = document.querySelectorAll("#campaign-goals-list button") as NodeListOf<HTMLButtonElement>;
+    let prevBtn: HTMLButtonElement | null = null;
+
+    btnList.forEach((btn) => {
+      const btnElement = btn as HTMLButtonElement;
+      const value = btnElement.getAttribute("value") as string;
+      btnElement.addEventListener("click", () => {
+        if (prevBtn) {
+          prevBtn.classList.remove("buttonSelected");
+        }
+        prevBtn = btnElement;
+        btnElement.classList.toggle("buttonSelected");
+        campaignStore.set(value);
+      });
+    });
+  });
+</script>

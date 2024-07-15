@@ -1,0 +1,35 @@
+{
+  "name": "ugcmarket",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sst bind astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sst:deploy": "sst deploy",
+    "sst:dev": "sst dev"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.8.1",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@nanostores/react": "^0.7.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.11.5",
+    "css.gg": "^2.1.1",
+    "nanostores": "^0.10.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "sst": "^2.43.3",
+    "aws-cdk-lib": "2.142.1",
+    "constructs": "10.3.0",
+    "astro-sst": "^2.43.3"
+  }
+}

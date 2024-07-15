@@ -1,0 +1,12 @@
+---
+import AsideMenuItem from "./AsideMenuItem.astro";
+import { asideNavigation } from "~/navigation";
+---
+
+<nav>
+  <ul>
+    {asideNavigation.map((item) => (
+      <AsideMenuItem item={item} />
+    ))}
+  </ul>
+</nav>

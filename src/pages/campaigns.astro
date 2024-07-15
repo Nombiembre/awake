@@ -1,0 +1,18 @@
+---
+import ButtonPrimary from "~/components/common/ButtonPrimary.astro";
+import ButtonSecondary from "~/components/common/ButtonSecondary.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <h2 class="text-2xl font-normal text-zinc-700">My campaigns</h2>
+
+  <div class="flex justify-between items-center">
+    <div class="flex gap-4 mt-6 ">
+      <ButtonPrimary value="activeCampaigns">Active Campaigns <span class="text-zinc-500 opacity-80" id="active-campaigns-count">0</span></ButtonPrimary>
+      <ButtonPrimary value="draftCampaigns">Draft Campaigns <span class="text-zinc-500 opacity-80" id="draft-campaigns-count">0</span></ButtonPrimary>
+      <ButtonPrimary value="closedCampaigns">Closed <span class="text-zinc-500 opacity-80" id="closed-campaigns-count">0</span></ButtonPrimary>
+    </div>
+    <ButtonSecondary>New Campaign</ButtonSecondary>
+  </div>
+</Layout>

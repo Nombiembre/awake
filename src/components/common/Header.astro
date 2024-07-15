@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<header class="[grid-area:header]">
+  <div class=`flex justify-between items-center px-8 py-4 border-b border-gray-300`>
+    <h1><a href="/">UGC Market</a></h1>
+    <a href="/account">account</a>
+  </div>
+</header>

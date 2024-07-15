@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.buttonSelected {
+  @apply border-zinc-600;
+}
+
+.aside-menu-item-active {
+  @apply border-gray-700;
+}
