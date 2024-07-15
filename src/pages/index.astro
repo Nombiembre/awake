@@ -37,8 +37,6 @@ import Layout from "~/layouts/Layout.astro";
 
 <script>
   import { campaignStore } from "~/stores/chooseCampaign";
-  import { randomUUID } from "crypto";
-
   document.addEventListener("astro:page-load", () => {
     const btnList = document.querySelectorAll(
       "#campaign-goals-list button"
