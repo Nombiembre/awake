@@ -1,0 +1,14 @@
+---
+import Home from "~/assets/icons/Home.astro";
+import Calendar from "~/assets/icons/Calendar.astro";
+
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+
+const classes = 'w-6 h-6 stroke-slate-700'
+---
+{
+  name === 'home' ? <Home class={classes}/> : <Calendar class={classes}/>
+}

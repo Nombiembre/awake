@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { campaignStore } from "~/stores/chooseCampaign";
+import { campaignStore } from "~/stores/asideExpanded";
 import { relationships } from "~/lib/strategiesDB";
 import { useState } from "react";
 

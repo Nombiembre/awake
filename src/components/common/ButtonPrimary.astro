@@ -1,10 +1,10 @@
 ---
 export interface Props {
   class?: string;
-  value?: string;
+  href: string;
 }
-const { class: className, value } = Astro.props;
+const { class: className, href } = Astro.props;
 ---
-<button type="button" name='campaign-goal' value={value} class=`block text-zinc-700 border rounded-lg border-zinc-300 px-8 py-3 bg-white  ${className} flex items-center gap-4`>
+<a href={href} class=`block cursor-pointer max-w-fit text-zinc-700 border rounded-lg border-zinc-300 px-8 py-3 bg-white  ${className} flex items-center gap-4`>
   <slot />
-</button>
+</a>

@@ -1,12 +1,14 @@
 import { defineConfig } from "astro/config";
-import aws from "astro-sst";
 import tailwind from "@astrojs/tailwind";
-
 import react from "@astrojs/react";
+import vercel from "@astrojs/vercel/serverless";
+
+import markdoc from "@astrojs/markdoc";
+import keystaticAstro from "@keystatic/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: aws(),
-  integrations: [tailwind(), react()]
+  output: "hybrid",
+  integrations: [tailwind(), react(), markdoc(), keystaticAstro()],
+  adapter: vercel()
 });

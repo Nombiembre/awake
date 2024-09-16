@@ -1,12 +1,13 @@
 ---
 import type { AsideMenuItem } from "~/navigation";
+import Icon from "./Icon.astro";
 
 interface Props {
   item: AsideMenuItem;
 }
 
 const { item } = Astro.props;
-const { name, href, icon } = item;
+const { href, icon } = item;
 
 // check if the current page is active
 const isActive = href === Astro.url.pathname;
@@ -15,13 +16,12 @@ const isActive = href === Astro.url.pathname;
 <li>
   <a
     href={href}
-    class=`flex gap-4 items-center text-md px-4 py-2 text-gray-800 transition-colors hover:bg-gray-100
-    border border-transparent rounded-lg ${isActive ? "aside-menu-item-active" : ""}
+    class=`flex gap-4 items-center text-md p-2 text-gray-800 transition-colors hover:bg-gray-100
+    border border-transparent rounded-lg w-fit ${isActive ? "aside-menu-item-active" : ""}
     `
   >
     <div class="size-7 grid place-items-center">
-      <i class={`ai-${icon} text-lg `}></i>
+      <Icon name={icon} />
     </div>
-    <span>{name}</span> 
   </a>
 </li>
