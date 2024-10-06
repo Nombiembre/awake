@@ -4,20 +4,59 @@ import { getCollection } from 'astro:content';
 import Layout from "~/layouts/Layout.astro";
 
 import ButtonPrimary from "~/components/common/ButtonPrimary.astro";
+let currentMonth = ''; // Inicializamos el mes actual
 
+// Obtener la colección de posts y ordenar por fecha descendente
+let allBlogPosts = await getCollection('blog');
+allBlogPosts = allBlogPosts.sort((a, b) => new Date(b.data.fecha) - new Date(a.data.fecha));
 
-const allBlogPosts = await getCollection('blog');
+// Función para obtener el nombre del mes a partir de una fecha
+function getMonthName(date: Date) {
+  const months = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+  return months[date.getMonth()];
+}
 ---
 
 <Layout title="Welcome to Astro.">
-  <h2 class="text-2xl font-normal text-zinc-700 mb-4">Inicio</h2>
-  {
-    allBlogPosts.map((post) => {
-      const { title } = post.data
+  <h2 class="text-2xl font-semibold text-zinc-900 mb-4">Inicio</h2>
 
-      return <ButtonPrimary href={`/blog/${post.slug}`}>
-        {title}
-      </ButtonPrimary>
-    })
-  }
+  <div class="flex gap-2">
+    <!-- {
+      allBlogPosts.map((post) => {
+        if(post.data.esconder) return null;
+
+        const postDate = new Date(post.data.fecha);
+        const postMonth = `${getMonthName(postDate)} `;
+
+        let monthHeader = null;
+        if (postMonth !== currentMonth) {
+          currentMonth = postMonth;
+          monthHeader = <h2 class="text-xl font-medium text-zinc-700 my-3">{currentMonth}</h2>;
+        }
+
+        return (
+          <div>
+            { monthHeader }
+              <ButtonPrimary href={`/blog/${post.slug}`}>
+                {post.data.title}
+              </ButtonPrimary>
+          </div>
+        );
+      })
+    } -->
+    {
+      allBlogPosts.map((post) => {
+        if(post.data.esconder) return null;
+
+        return (
+            <ButtonPrimary href={`/blog/${post.slug}`}>
+              {post.data.title}
+            </ButtonPrimary>
+        );
+    }
+    )}
+  </div>
 </Layout>
