@@ -17,6 +17,7 @@ export default config({
         esconder: fields.checkbox({ label: "Hide" }),
         content: fields.markdoc({
           label: "Content",
+          extension: "md",
         }),
       },
     }),
